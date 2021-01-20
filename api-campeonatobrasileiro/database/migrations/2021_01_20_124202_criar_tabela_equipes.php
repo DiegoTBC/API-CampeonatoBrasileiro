@@ -15,8 +15,8 @@ class CriarTabelaEquipes extends Migration
     {
         Schema::create('equipes', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->integer('id_campeonato');
-            $table->foreign('id_campeonato')->references('id')->on('campeonatos');
+            $table->integer('campeonato_id');
+            $table->foreign('campeonato_id')->references('id')->on('campeonatos');
             $table->string('posicao')->default(0);
             $table->string('nome')->unique();
             $table->integer('pontos')->default(0);

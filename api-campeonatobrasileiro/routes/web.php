@@ -16,3 +16,8 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('seriea', 'CampeonatosController@serieA');
+
+$router->get('serieb', 'CampeonatosController@serieB');
+
