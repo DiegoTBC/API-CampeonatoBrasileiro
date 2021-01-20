@@ -13,8 +13,9 @@ class CriarTabelaEquipes extends Migration
      */
     public function up()
     {
-        Schema::table('equipes', function (Blueprint $table) {
+        Schema::create('equipes', function (Blueprint $table) {
             $table->tinyIncrements('id');
+            $table->integer('id_campeonato');
             $table->foreign('id_campeonato')->references('id')->on('campeonatos');
             $table->string('posicao')->default(0);
             $table->string('nome')->unique();
@@ -39,8 +40,6 @@ class CriarTabelaEquipes extends Migration
      */
     public function down()
     {
-        Schema::table('equipes', function (Blueprint $table) {
-            Schema::dropIfExists('equipes');
-        });
+        Schema::dropIfExists('equipes');
     }
 }
