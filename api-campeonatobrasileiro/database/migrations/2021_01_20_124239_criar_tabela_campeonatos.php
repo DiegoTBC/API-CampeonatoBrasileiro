@@ -14,7 +14,9 @@ class CriarTabelaCampeonatos extends Migration
     public function up()
     {
         Schema::table('campeonatos', function (Blueprint $table) {
-            //
+            $table->tinyIncrements('id');
+            $table->string('nome');
+            $table->timestamps();
         });
     }
 
@@ -26,7 +28,7 @@ class CriarTabelaCampeonatos extends Migration
     public function down()
     {
         Schema::table('campeonatos', function (Blueprint $table) {
-            //
+            Schema::dropIfExists('campeonatos');
         });
     }
 }
