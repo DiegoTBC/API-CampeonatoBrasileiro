@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Campeonato;
 use App\Models\Equipe;
+use App\Services\SalvaDadosBrasileirao;
 
 class CampeonatosController extends Controller
 {
@@ -23,6 +24,11 @@ class CampeonatosController extends Controller
         $classificacao = $campeonato->equipes()->orderBy('pontos', 'desc')->get();
 
         return response()->json($classificacao, 200, [], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    }
+
+    public function salvar()
+    {
+        SalvaDadosBrasileirao::all();
     }
 
 }

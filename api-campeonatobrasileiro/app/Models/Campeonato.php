@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Campeonato extends Model
 {
     protected $fillable = ['nome'];
-    public $timestamps;
+    public $timestamps = false;
+    protected $hidden = ['id'];
+
 
     public function equipes()
     {

@@ -1,22 +1,23 @@
 <?php
 
 
-namespace app\Services;
+namespace App\Services;
 
-
-use App\Models\Equipe;
 use Illuminate\Support\Facades\DB;
 
-class SalvaDadosBrasileirao
+abstract class SalvaDadosBrasileirao
 {
-
-    public function all()
+    static public function all()
     {
-        $this->serieA();
-        $this->serieB();
+        try {
+            self::serieA();
+            self::serieB();
+        } catch (\Exception $error) {
+            return "Falhou em salvar dados";
+        }
     }
 
-    public function serieA()
+    static private function serieA()
     {
         $times = json_decode(ObtemDadosBrasileirao::serieA());
 
@@ -38,7 +39,7 @@ class SalvaDadosBrasileirao
         }
     }
 
-    public function serieB()
+    static private function serieB()
     {
         $times = json_decode(ObtemDadosBrasileirao::serieB());
 

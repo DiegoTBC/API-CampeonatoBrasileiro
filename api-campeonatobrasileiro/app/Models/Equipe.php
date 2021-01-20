@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Equipe extends Model
 {
     protected $fillable = ['posicao', 'nome', 'pontos', 'jogos', 'vitorias', 'empates', 'derrotas', 'gols_pro', 'gols_contra', 'saldo_gols', 'aproveitamento' ];
-    public $timestamps;
+    public $timestamps = false;
     protected $hidden = ['id', 'campeonato_id', 'created_at', 'updated_at'];
     protected $casts = [
         'pontos' => 'integer',

@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-require_once '../../vendor/autoload.php';
 
 class ObtemDadosBrasileirao
 {
@@ -13,7 +12,7 @@ class ObtemDadosBrasileirao
         $browser = new \Symfony\Component\BrowserKit\HttpBrowser($client);
         $crawler = $browser->request("GET", "https://www.terra.com.br/esportes/futebol/brasileiro-serie-a/tabela/");
 
-        $nomeCampeonato = $crawler->filter('channelHeader > a')->text();
+        $nomeCampeonato = ['campeonato' => $crawler->filter('channelHeader > a')->text()];
 
         $classificacao = $crawler->filter("tbody > tr")->each(function ($node) {
             /** @var \Symfony\Component\DomCrawler\Crawler $node */
@@ -32,6 +31,7 @@ class ObtemDadosBrasileirao
             $return['aproveitamento'] = $node->filter("td:nth-child(13)")->text();
             return $return;
         });
+        $classificacao = array_merge($nomeCampeonato, $classificacao);
 
         return json_encode($classificacao, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }

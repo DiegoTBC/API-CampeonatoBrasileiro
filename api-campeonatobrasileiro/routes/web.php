@@ -20,4 +20,5 @@ $router->get('/', function () use ($router) {
 $router->get('seriea', 'CampeonatosController@serieA');
 
 $router->get('serieb', 'CampeonatosController@serieB');
+$router->get('salvar', 'CampeonatosController@salvar');
 
